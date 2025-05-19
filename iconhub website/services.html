@@ -1,0 +1,361 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services | IconHub Limited</title>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .service-card {
+            perspective: 1000px;
+            min-height: 400px;
+        }
+
+        .service-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+
+        .service-card:hover .service-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .service-front, .service-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            border-radius: 1rem;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .service-back {
+            transform: rotateY(180deg);
+        }
+
+        .modal-overlay {
+            backdrop-filter: blur(5px);
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateY(20px);
+            opacity: 0;
+        }
+
+        .modal-active .modal-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        .nav-link {
+            position: relative;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #DB5F2A;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+            .mobile-menu.open {
+                max-height: 500px; /* Adjust based on content height */
+            }
+    </style>
+</head>
+<body class="font-inter bg-[#F5F5F5]">
+    <nav class="fixed w-full top-0 bg-white/90 backdrop-blur-md z-50 shadow-sm border-b border-gray-100">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center gap-2">
+                    <div class="w-10 h-10 bg-[#0A3A60] rounded-full flex items-center justify-center">
+                        <span class="font-poppins text-white text-xl font-bold">IH</span>
+                    </div>
+                    <span class="font-poppins font-bold text-xl text-[#1A1A1A]">ICONHUB</span>
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="nav-link px-3 py-2 rounded-lg hover:bg-gray-100 transition-colors">Home</a>
+                    <a href="services.html" class="nav-link px-3 py-2 rounded-lg hover:bg-gray-100 transition-colors">Services</a>
+                    <a href="about.html" class="nav-link px-3 py-2 rounded-lg hover:bg-gray-100 transition-colors">About</a>
+                    <a href="contact.html" class="nav-link px-3 py-2 rounded-lg hover:bg-gray-100 transition-colors">Contact</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden p-2 rounded-lg hover:bg-gray-100 mobile-menu-button">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu (REQUIRED ON ALL PAGES) -->
+        <div class="mobile-menu hidden md:hidden bg-white border-t border-gray-100">
+            <div class="px-4 py-2 space-y-2">
+                <a href="index.html" class="block px-3 py-2 hover:bg-gray-100">Home</a>
+                <a href="services.html" class="block px-3 py-2 hover:bg-gray-100">Services</a>
+                <a href="about.html" class="block px-3 py-2 hover:bg-gray-100">About</a>
+                <a href="contact.html" class="block px-3 py-2 hover:bg-gray-100">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Services Hero -->
+    <section class="pt-24 bg-gradient-to-br from-[#0A3A60] to-[#1a4d7e] text-white">
+        <div class="container mx-auto px-6 py-24 text-center" data-aos="fade-up">
+            <h1 class="font-poppins font-bold text-4xl md:text-6xl uppercase mb-6">
+                Our <span class="text-[#DB5F2A]">Expertise</span>
+            </h1>
+            <p class="text-xl max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+                Comprehensive solutions for modern business challenges
+            </p>
+        </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Professional Training -->
+                <div class="service-card" data-aos="flip-up">
+                    <div class="service-card-inner">
+                        <div class="service-front bg-[#F5F5F5] shadow-md">
+                            <div class="text-[#DB5F2A] text-5xl mb-6">📚</div>
+                            <h3 class="font-poppins font-bold text-xl mb-4 text-center">Professional Training</h3>
+                            <p class="text-gray-600 text-center">Customized corporate training programs</p>
+                        </div>
+                        <div class="service-back bg-[#0A3A60] text-white">
+                            <h3 class="font-poppins font-bold text-xl mb-4 text-center">Training Programs</h3>
+                            <ul class="text-sm space-y-2 mb-6 text-center">
+                                <li>Leadership Development</li>
+                                <li>Technical Skill Building</li>
+                                <li>Compliance Training</li>
+                            </ul>
+                            <button onclick="showServiceModal('Professional Training')"
+                                    class="bg-[#DB5F2A] text-white px-6 py-2 rounded-full hover:bg-[#C24E1F] transition-colors">
+                                Enquire Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Financial Consultancy -->
+                <div class="service-card" data-aos="flip-up" data-aos-delay="100">
+                    <div class="service-card-inner">
+                        <div class="service-front bg-[#F5F5F5] shadow-md">
+                            <div class="text-[#DB5F2A] text-5xl mb-6">💰</div>
+                            <h3 class="font-poppins font-bold text-xl mb-4 text-center">Financial Consultancy</h3>
+                            <p class="text-gray-600 text-center">Strategic financial planning solutions</p>
+                        </div>
+                        <div class="service-back bg-[#0A3A60] text-white">
+                            <h3 class="font-poppins font-bold text-xl mb-4 text-center">Financial Services</h3>
+                            <ul class="text-sm space-y-2 mb-6 text-center">
+                                <li>Investment Advisory</li>
+                                <li>Risk Management</li>
+                                <li>Tax Optimization</li>
+                            </ul>
+                            <button onclick="showServiceModal('Financial Consultancy')"
+                                    class="bg-[#DB5F2A] text-white px-6 py-2 rounded-full hover:bg-[#C24E1F] transition-colors">
+                                Enquire Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Logistics Solutions -->
+                <div class="service-card" data-aos="flip-up" data-aos-delay="200">
+                    <div class="service-card-inner">
+                        <div class="service-front bg-[#F5F5F5] shadow-md">
+                            <div class="text-[#DB5F2A] text-5xl mb-6">🚚</div>
+                            <h3 class="font-poppins font-bold text-xl mb-4 text-center">Logistics Solutions</h3>
+                            <p class="text-gray-600 text-center">End-to-end supply chain management</p>
+                        </div>
+                        <div class="service-back bg-[#0A3A60] text-white">
+                            <h3 class="font-poppins font-bold text-xl mb-4 text-center">Logistics Services</h3>
+                            <ul class="text-sm space-y-2 mb-6 text-center">
+                                <li>Warehousing Solutions</li>
+                                <li>Transportation Management</li>
+                                <li>Inventory Optimization</li>
+                            </ul>
+                            <button onclick="showServiceModal('Logistics Solutions')"
+                                    class="bg-[#DB5F2A] text-white px-6 py-2 rounded-full hover:bg-[#C24E1F] transition-colors">
+                                Enquire Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add more services following the same pattern -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Modal -->
+    <div class="modal-overlay fixed inset-0 z-50 hidden items-center justify-center">
+        <div class="modal-content bg-white rounded-xl p-8 max-w-md w-full mx-4">
+            <div class="flex justify-between mb-6">
+                <h3 class="font-poppins font-bold text-2xl">Service Enquiry</h3>
+                <button onclick="closeModal()" class="text-2xl hover:text-[#DB5F2A] transition-colors">&times;</button>
+            </div>
+            <form class="space-y-4">
+                <input type="hidden" id="service-title">
+                <div>
+                    <input type="text" placeholder="Your Name" required
+                           class="w-full p-3 rounded-lg border focus:ring-2 focus:ring-[#DB5F2A] focus:border-transparent">
+                </div>
+                <div>
+                    <input type="email" placeholder="Email Address" required
+                           class="w-full p-3 rounded-lg border focus:ring-2 focus:ring-[#DB5F2A] focus:border-transparent">
+                </div>
+                <div>
+                    <textarea rows="4" placeholder="Message" required
+                              class="w-full p-3 rounded-lg border focus:ring-2 focus:ring-[#DB5F2A] focus:border-transparent"></textarea>
+                </div>
+                <button type="submit"
+                        class="bg-[#DB5F2A] text-white px-8 py-3 rounded-lg hover:bg-[#C24E1F] w-full transition-colors">
+                    Send Enquiry
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-[#1A1A1A] text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8" data-aos="fade-up">
+                <div>
+                    <div class="w-12 h-12 bg-[#0A3A60] rounded-full flex items-center justify-center mb-4">
+                        <span class="font-poppins text-white text-xl font-bold">IH</span>
+                    </div>
+                    <p class="text-sm">Innovating business solutions since 2015</p>
+                </div>
+                <div>
+                    <h4 class="font-poppins font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="hover:text-[#DB5F2A] transition-colors">Home</a></li>
+                        <li><a href="about.html" class="hover:text-[#DB5F2A]">About</a></li>
+                        <li><a href="service.html" class="hover:text-[#DB5F2A]">Services</a></li>
+                        <li><a href="contact.html" class="hover:text-[#DB5F2A]">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-poppins font-bold mb-4">Contact</h4>
+                    <p class="text-sm">1 RCF Zone<br>Ibadan, Oyo state<br>Nigeria</p>
+                    <p class="text-sm mt-2">Tel: (+234) 123-4567</p>
+                </div>
+                <div>
+                    <h4 class="font-poppins font-bold mb-4">Follow Us</h4>
+                    <div class="flex gap-4">
+                        <a href="#" class="hover:text-[#DB5F2A]">LinkedIn</a>
+                        <a href="#" class="hover:text-[#DB5F2A]">Twitter</a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-white/10 mt-12 pt-8 text-center">
+                <p class="text-sm">&copy; 2023 IconHub Limited. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+            easing: 'ease-out-quad'
+        });
+
+        // Modal Handling
+        function showServiceModal(serviceTitle) {
+            document.getElementById('service-title').value = serviceTitle;
+            const modal = document.querySelector('.modal-overlay');
+            modal.classList.remove('hidden');
+            setTimeout(() => modal.classList.add('modal-active'), 10);
+        }
+
+        function closeModal() {
+            const modal = document.querySelector('.modal-overlay');
+            modal.classList.remove('modal-active');
+            setTimeout(() => modal.classList.add('hidden'), 300);
+        }
+
+        // Close modal on outside click
+        document.querySelector('.modal-overlay').addEventListener('click', (e) => {
+            if (e.target === document.querySelector('.modal-overlay')) {
+                closeModal();
+            }
+        });
+
+        // Mobile Menu
+        const menuButton = document.querySelector('.mobile-menu-button');
+        const mobileMenu = document.querySelector('.mobile-menu');
+
+        menuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Form Submission
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            // Add form submission logic here
+            console.log('Form submitted:', Object.fromEntries(formData));
+            closeModal();
+            // Mobile Menu Toggle
+            document.querySelector('.mobile-menu-button').addEventListener('click', () => {
+                const menu = document.querySelector('.mobile-menu');
+                menu.classList.toggle('open');
+            });
+
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', (e) => {
+                const menu = document.querySelector('.mobile-menu');
+                const button = document.querySelector('.mobile-menu-button');
+
+                if (!menu.contains(e.target) && !button.contains(e.target)) {
+                    menu.classList.remove('open');
+                }
+            });
+
+            // Add active class to current page link
+            const currentPage = location.pathname.split('/').pop();
+            document.querySelectorAll('.nav-link').forEach(link => {
+                if (link.getAttribute('href') === currentPage) {
+                    link.classList.add('active');
+                    link.style.color = '#DB5F2A'; // Set active color
+                }
+            });
+        });
+    </script>
+</body>
+</html>

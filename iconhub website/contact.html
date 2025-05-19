@@ -1,0 +1,341 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | IconHub Limited</title>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://maps.googleapis.com">
+    <style>
+        .glow-input:focus {
+            box-shadow: 0 0 15px rgba(219, 95, 42, 0.3);
+        }
+
+        .submit-loader {
+            display: none;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .toast {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            bottom: -100px;
+        }
+
+            .toast.active {
+                bottom: 40px;
+            }
+
+        .nav-link {
+            position: relative;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+            .nav-link::after {
+                content: '';
+                position: absolute;
+                bottom: -2px;
+                left: 0;
+                width: 0;
+                height: 2px;
+                background: #DB5F2A;
+                transition: width 0.3s ease;
+            }
+
+            .nav-link:hover::after,
+            .nav-link.active::after {
+                width: 100%;
+            }
+
+        .mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+            .mobile-menu.open {
+                max-height: 500px; /* Adjust based on content height */
+            }
+    </style>
+</head>
+<body class="font-inter bg-[#F5F5F5]">
+    <!-- Navigation -->
+    <nav class="fixed w-full top-0 bg-white/90 backdrop-blur-md z-50 shadow-sm border-b border-gray-100">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center gap-2">
+                    <div class="w-10 h-10 bg-[#0A3A60] rounded-full flex items-center justify-center">
+                        <span class="font-poppins text-white text-xl font-bold">IH</span>
+                    </div>
+                    <span class="font-poppins font-bold text-xl text-[#1A1A1A]">ICONHUB</span>
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="nav-link px-3 py-2 rounded-lg hover:bg-gray-100 transition-colors">Home</a>
+                    <a href="services.html" class="nav-link px-3 py-2 rounded-lg hover:bg-gray-100 transition-colors">Services</a>
+                    <a href="about.html" class="nav-link px-3 py-2 rounded-lg hover:bg-gray-100 transition-colors">About</a>
+                    <a href="contact.html" class="nav-link px-3 py-2 rounded-lg hover:bg-gray-100 transition-colors">Contact</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden p-2 rounded-lg hover:bg-gray-100 mobile-menu-button">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu (REQUIRED ON ALL PAGES) -->
+        <div class="mobile-menu hidden md:hidden bg-white border-t border-gray-100">
+            <div class="px-4 py-2 space-y-2">
+                <a href="index.html" class="block px-3 py-2 hover:bg-gray-100">Home</a>
+                <a href="services.html" class="block px-3 py-2 hover:bg-gray-100">Services</a>
+                <a href="about.html" class="block px-3 py-2 hover:bg-gray-100">About</a>
+                <a href="contact.html" class="block px-3 py-2 hover:bg-gray-100">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contact Section -->
+    <main class="pt-24 min-h-screen">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid md:grid-cols-2 gap-12 items-start">
+                <!-- Contact Info -->
+                <div class="space-y-8" data-aos="fade-right">
+                    <h1 class="font-poppins font-bold text-4xl text-[#0A3A60]">Get in Touch</h1>
+
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-[#DB5F2A]/10 rounded-full flex items-center justify-center">
+                                <span class="text-[#DB5F2A] text-xl">📍</span>
+                            </div>
+                            <div>
+                                <h3 class="font-poppins font-bold text-lg">Headquarters</h3>
+                                <p class="text-gray-600">1 RCF Zone<br>Ibadan, Oyo state<br> Nigeria</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-[#DB5F2A]/10 rounded-full flex items-center justify-center">
+                                <span class="text-[#DB5F2A] text-xl">📞</span>
+                            </div>
+                            <div>
+                                <h3 class="font-poppins font-bold text-lg">Phone</h3>
+                                <p class="text-gray-600">(+234) 123-4567<br>Mon-Fri: 9AM - 5PM EST</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-[#DB5F2A]/10 rounded-full flex items-center justify-center">
+                                <span class="text-[#DB5F2A] text-xl">✉️</span>
+                            </div>
+                            <div>
+                                <h3 class="font-poppins font-bold text-lg">Email</h3>
+                                <p class="text-gray-600">contact@iconhub.com<br>support@iconhub.com</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Google Map -->
+                    <div class="aspect-video bg-gray-200 rounded-xl overflow-hidden shadow-md"
+                         data-aos="fade-up"
+                         data-lazy-map>
+                        <iframe class="lazy-iframe w-full h-full"
+                                data-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387193.305935303!2d-74.25986573829822!3d40.69714941974409!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2s!4v1689762281513!5m2!1sen!2s"
+                                loading="lazy"
+                                aria-label="Company Location Map">
+                        </iframe>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <form class="bg-white p-8 rounded-xl shadow-md space-y-6" data-aos="fade-left" id="contactForm">
+                    <div>
+                        <label class="block text-gray-700 mb-2">Full Name</label>
+                        <input type="text" required
+                               class="w-full p-3 rounded-lg border border-[#E0E0E0] glow-input
+                                      focus:outline-none focus:border-[#DB5F2A] transition-all">
+                    </div>
+
+                    <div>
+                        <label class="block text-gray-700 mb-2">Email Address</label>
+                        <input type="email" required
+                               class="w-full p-3 rounded-lg border border-[#E0E0E0] glow-input
+                                      focus:outline-none focus:border-[#DB5F2A] transition-all">
+                    </div>
+
+                    <div>
+                        <label class="block text-gray-700 mb-2">Subject</label>
+                        <input type="text" required
+                               class="w-full p-3 rounded-lg border border-[#E0E0E0] glow-input
+                                      focus:outline-none focus:border-[#DB5F2A] transition-all">
+                    </div>
+
+                    <div>
+                        <label class="block text-gray-700 mb-2">Message</label>
+                        <textarea rows="5" required
+                                  class="w-full p-3 rounded-lg border border-[#E0E0E0] glow-input
+                                         focus:outline-none focus:border-[#DB5F2A] transition-all"></textarea>
+                    </div>
+
+                    <button type="submit"
+                            class="bg-[#DB5F2A] text-white px-8 py-4 rounded-xl hover:bg-[#C24E1F]
+                                   transition-all w-full flex items-center justify-center gap-2">
+                        <span class="submit-text">Send Message</span>
+                        <div class="submit-loader w-5 h-5 border-2 border-white border-t-transparent rounded-full"></div>
+                        <svg class="submit-success hidden w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Toast Notification -->
+    <div class="toast fixed left-1/2 -translate-x-1/2 bg-[#0A3A60] text-white px-6 py-3 rounded-xl flex items-center gap-2">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+        </svg>
+        Message sent successfully!
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-[#1A1A1A] text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8" data-aos="fade-up">
+                <div>
+                    <div class="w-12 h-12 bg-[#0A3A60] rounded-full flex items-center justify-center mb-4">
+                        <span class="font-poppins text-white text-xl font-bold">IH</span>
+                    </div>
+                    <p class="text-sm">Innovating business solutions since 2015</p>
+                </div>
+                <div>
+                    <h4 class="font-poppins font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="hover:text-[#DB5F2A] transition-colors">Home</a></li>
+                        <li><a href="about.html" class="hover:text-[#DB5F2A] transition-colors">About</a></li>
+                        <li><a href="services.html" class="hover:text-[#DB5F2A] transition-colors">Services</a></li>
+                        <li><a href="contact.html" class="hover:text-[#DB5F2A] transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-poppins font-bold mb-4">Contact</h4>
+                    <p class="text-sm">1 RCF Zone<br>Ibadan, Oyo state<br> Nigeria</p>
+                    <p class="text-sm mt-2">Tel: (+234) 123-4567</p>
+                </div>
+                <div>
+                    <h4 class="font-poppins font-bold mb-4">Follow Us</h4>
+                    <div class="flex gap-4">
+                        <a href="#" class="hover:text-[#DB5F2A] transition-colors">LinkedIn</a>
+                        <a href="#" class="hover:text-[#DB5F2A] transition-colors">Twitter</a>
+                    </div>
+                </div>
+                <div class="border-t border-white/10 mt-12 pt-8 text-center">
+                    <p class="text-sm">&copy; 2025 IconHub Limited. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+            easing: 'ease-out-quad'
+        });
+
+        // Form Submission
+        document.getElementById('contactForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const form = e.target;
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const loader = submitBtn.querySelector('.submit-loader');
+            const successIcon = submitBtn.querySelector('.submit-success');
+            const toast = document.querySelector('.toast');
+
+            // Show loading state
+            submitBtn.disabled = true;
+            form.querySelector('.submit-text').style.opacity = '0.5';
+            loader.style.display = 'block';
+
+            // Simulate API call
+            setTimeout(() => {
+                // Show success state
+                loader.style.display = 'none';
+                successIcon.classList.remove('hidden');
+                submitBtn.disabled = false;
+                form.querySelector('.submit-text').style.opacity = '1';
+
+                // Show toast
+                toast.classList.add('active');
+                setTimeout(() => toast.classList.remove('active'), 3000);
+
+                // Reset after 2 seconds
+                setTimeout(() => {
+                    successIcon.classList.add('hidden');
+                    form.reset();
+                }, 2000);
+            }, 1500);
+        });
+
+        // Mobile Menu
+        const menuButton = document.querySelector('.mobile-menu-button');
+        const mobileMenu = document.querySelector('.mobile-menu');
+
+        menuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        // Mobile Menu Toggle
+        document.querySelector('.mobile-menu-button').addEventListener('click', () => {
+            const menu = document.querySelector('.mobile-menu');
+            menu.classList.toggle('open');
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            const menu = document.querySelector('.mobile-menu');
+            const button = document.querySelector('.mobile-menu-button');
+
+            if (!menu.contains(e.target) && !button.contains(e.target)) {
+                menu.classList.remove('open');
+            }
+        });
+
+        // Add active class to current page link
+        const currentPage = location.pathname.split('/').pop();
+        document.querySelectorAll('.nav-link').forEach(link => {
+            if (link.getAttribute('href') === currentPage) {
+                link.classList.add('active');
+                link.style.color = '#DB5F2A'; // Set active color
+            }
+        });
+
+        // Load map when in view
+        const mapObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const iframe = entry.target.querySelector('.lazy-iframe');
+                    iframe.src = iframe.dataset.src;
+                    mapObserver.unobserve(entry.target);
+                }
+            });
+        });
+
+        document.querySelectorAll('[data-lazy-map]').forEach(el => mapObserver.observe(el));
+    </script>
+</body>
+</html>

@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IconHub Limited | Innovative Business Solutions</title>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Prevent horizontal overflow */
+        html, body {
+            width: 100%;
+            overflow-x: hidden;
+        }
+            
+        /* Constrain all content */
+        .container {
+            @apply max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8;
+        }
+
+        /* Fix for mobile viewport units */
+        @supports (-webkit-touch-callout: none) {
+            .min-h-screen {
+                min-height: -webkit-fill-available;
+            }
+        }
+        @font-face {
+            font-family: 'Poppins';
+            src: url('./fonts/Poppins-Bold.woff2') format('woff2');
+            font-weight: 700;
+        }
+
+        @font-face {
+            font-family: 'Inter';
+            src: url('./fonts/Inter-Regular.woff2') format('woff2');
+            font-weight: 400;
+        }
+
+        :root {
+            --primary: #0A3A60;
+            --accent: #DB5F2A;
+            --neutral: #F5F5F5;
+        }
+
+        .gradient-text {
+            background: linear-gradient(45deg, var(--accent), #FF8A65);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .card-hover {
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+        }
+
+            .card-hover:hover {
+                transform: translateY(-8px);
+                box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+            }
+
+        .flip-card {
+            perspective: 1000px;
+            min-height: 300px; /* Match card height */
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .front, .back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            padding: 2rem;
+            border-radius: 1rem;
+        }
+
+        .back {
+            transform: rotateY(180deg);
+        }
+        .nav-link {
+            position: relative;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+            .nav-link::after {
+                content: '';
+                position: absolute;
+                bottom: -2px;
+                left: 0;
+                width: 0;
+                height: 2px;
+                background: #DB5F2A;
+                transition: width 0.3s ease;
+            }
+
+            .nav-link:hover::after,
+            .nav-link.active::after {
+                width: 100%;
+            }
+
+        .mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+            .mobile-menu.open {
+                max-height: 500px; /* Adjust based on content height */
+            }
+    </style>
+</head>
+<body class="font-inter bg-[#F5F5F5]">
+    <nav class="fixed w-full top-0 bg-white/90 backdrop-blur-md z-50 shadow-sm border-b border-gray-100">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center gap-2">
+                    <div class="w-10 h-10 bg-[#0A3A60] rounded-full flex items-center justify-center">
+                        <span class="font-poppins text-white text-xl font-bold">IH</span>
+                    </div>
+                    <span class="font-poppins font-bold text-xl text-[#1A1A1A]">ICONHUB</span>
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="nav-link px-3 py-2 rounded-lg hover:bg-gray-100 transition-colors">Home</a>
+                    <a href="services.html" class="nav-link px-3 py-2 rounded-lg hover:bg-gray-100 transition-colors">Services</a>
+                    <a href="about.html" class="nav-link px-3 py-2 rounded-lg hover:bg-gray-100 transition-colors">About</a>
+                    <a href="contact.html" class="nav-link px-3 py-2 rounded-lg hover:bg-gray-100 transition-colors">Contact</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden p-2 rounded-lg hover:bg-gray-100 mobile-menu-button">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu (REQUIRED ON ALL PAGES) -->
+        <div class="mobile-menu hidden md:hidden bg-white border-t border-gray-100">
+            <div class="px-4 py-2 space-y-2">
+                <a href="index.html" class="block px-3 py-2 hover:bg-gray-100">Home</a>
+                <a href="services.html" class="block px-3 py-2 hover:bg-gray-100">Services</a>
+                <a href="about.html" class="block px-3 py-2 hover:bg-gray-100">About</a>
+                <a href="contact.html" class="block px-3 py-2 hover:bg-gray-100">Contact</a>
+            </div>
+        </div>
+    </nav>
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen pt-24 flex items-center justify-center bg-gradient-to-br from-[#0A3A60] to-[#1a4d7e]">
+        <div class="container mx-auto px-6 text-center" data-aos="zoom-in">
+            <h1 class="font-poppins font-bold text-4xl md:text-6xl uppercase mb-8 text-white">
+                <span class="gradient-text">Transforming</span><br>Business Excellence
+            </h1>
+            <p class="text-xl md:text-2xl text-white/90 mb-12 max-w-2xl mx-auto">
+                Innovative solutions across training, finance, logistics, and telecommunications
+            </p>
+            <button class="bg-[#DB5F2A] hover:bg-[#C24E1F] text-white px-8 py-4 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-lg">
+                Explore Services
+            </button>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 animate-bounce" data-aos="fade-up" data-aos-delay="500">
+            <div class="w-8 h-14 rounded-3xl border-2 border-white flex justify-center p-1">
+                <div class="w-3 h-3 bg-white rounded-full animate-scroll"></div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-[#F5F5F5]">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="relative" data-aos="fade-right">
+                    <div class="absolute inset-0 bg-[#DB5F2A] rounded-xl transform rotate-2"></div>
+                    <div class="relative bg-white p-8 rounded-xl shadow-md">
+                        <h2 class="font-poppins font-bold text-3xl mb-6">About IconHub</h2>
+                        <p class="text-gray-600 leading-relaxed">
+                            Pioneering business solutions since 2015, we deliver excellence across multiple industries...
+                        </p>
+                    </div>
+                </div>
+
+                <div class="space-y-8" data-aos="fade-left">
+                    <div class="p-6 bg-white rounded-xl shadow-md card-hover">
+                        <h3 class="font-poppins font-bold text-xl mb-3">Our Mission</h3>
+                        <p class="text-gray-600">Empowering businesses through innovative solutions...</p>
+                    </div>
+                    <div class="p-6 bg-white rounded-xl shadow-md card-hover">
+                        <h3 class="font-poppins font-bold text-xl mb-3">Core Values</h3>
+                        <p class="text-gray-600">Integrity, innovation, and client-focused approach...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-center font-poppins font-bold text-3xl mb-16" data-aos="fade-up">Our Services</h2>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service Card -->
+                <div class="flip-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flip-card-inner">
+                        <div class="front bg-white p-8 rounded-xl shadow-md card-hover">
+                            <div class="text-[#DB5F2A] text-4xl mb-4">📚</div>
+                            <h3 class="font-poppins font-bold text-xl mb-3">Training Programs</h3>
+                            <p class="text-gray-600">Comprehensive professional development solutions</p>
+                        </div>
+                        <div class="back absolute inset-0 bg-[#0A3A60] text-white p-8 rounded-xl flex flex-col items-center justify-center">
+                            <h3 class="font-poppins font-bold text-xl mb-3">Training Programs</h3>
+                            <p class="mb-4">Customized corporate training solutions</p>
+                            <button class="text-[#DB5F2A] bg-white px-6 py-2 rounded-full">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Repeat for other services -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-[#0A3A60] text-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto" data-aos="zoom-in">
+                <h2 class="text-center font-poppins font-bold text-3xl mb-12">Get in Touch</h2>
+
+                <form class="space-y-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <input type="text" placeholder="Name" class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 focus:outline-none focus:ring-2 focus:ring-[#DB5F2A]">
+                        <input type="email" placeholder="Email" class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 focus:outline-none focus:ring-2 focus:ring-[#DB5F2A]">
+                    </div>
+                    <textarea rows="5" placeholder="Message" class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 focus:outline-none focus:ring-2 focus:ring-[#DB5F2A]"></textarea>
+                    <button class="w-full bg-[#DB5F2A] hover:bg-[#C24E1F] text-white px-8 py-4 rounded-lg transition-all duration-300">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#1A1A1A] text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8" data-aos="fade-up">
+                <div>
+                    <div class="w-12 h-12 bg-[#0A3A60] rounded-full flex items-center justify-center mb-4">
+                        <span class="font-poppins text-white text-xl font-bold">IH</span>
+                    </div>
+                    <p class="text-sm">Innovating business solutions since 2015</p>
+                </div>
+                <div>
+                    <h4 class="font-poppins font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="hover:text-[#DB5F2A] transition-colors">Home</a></li>
+                        <li><a href="about.html" class="hover:text-[#DB5F2A]">About</a></li>
+                        <li><a href="services.html" class="hover:text-[#DB5F2A]">Services</a></li>
+                        <li><a href="contact.html" class="hover:text-[#DB5F2A]">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-poppins font-bold mb-4">Contact</h4>
+                    <p class="text-sm">1 RCF Zone<br>Ibadan, Oyo state<br>Nigeria</p>
+                    <p class="text-sm mt-2">Tel: (+234) 123-4567</p>
+                </div>
+                <div>
+                    <h4 class="font-poppins font-bold mb-4">Follow Us</h4>
+                    <div class="flex gap-4">
+                        <a href="#" class="hover:text-[#DB5F2A]">LinkedIn</a>
+                        <a href="#" class="hover:text-[#DB5F2A]">Twitter</a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-white/10 mt-12 pt-8 text-center">
+                <p>&copy; 2025 IconHub Limited. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuButton = document.querySelector('.mobile-menu-button');
+            const mobileMenu = document.querySelector('.mobile-menu');
+
+            menuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                menuButton.classList.toggle('text-[#DB5F2A]');
+            });
+
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.mobile-menu') && !e.target.closest('.mobile-menu-button')) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: false,
+            mirror: true,
+            easing: 'ease-out-back'
+        });
+
+        // Scroll Reveal Animation
+        const scrollReveal = {
+            distance: '50px',
+            duration: 1000,
+            easing: 'cubic-bezier(0.5, 0, 0, 1)'
+        };
+
+        // Parallax Effect
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            document.querySelectorAll('[data-parallax]').forEach(el => {
+                const speed = parseFloat(el.dataset.parallax);
+                el.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+
+        // Mobile Menu Toggle
+        document.querySelector('.mobile-menu-button').addEventListener('click', () => {
+            const menu = document.querySelector('.mobile-menu');
+            menu.classList.toggle('open');
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            const menu = document.querySelector('.mobile-menu');
+            const button = document.querySelector('.mobile-menu-button');
+
+            if (!menu.contains(e.target) && !button.contains(e.target)) {
+                menu.classList.remove('open');
+            }
+        });
+
+        // Add active class to current page link
+        const currentPage = location.pathname.split('/').pop();
+        document.querySelectorAll('.nav-link').forEach(link => {
+            if (link.getAttribute('href') === currentPage) {
+                link.classList.add('active');
+                link.style.color = '#DB5F2A'; // Set active color
+            }
+        });
+
+        // Mobile Menu Toggle
+        document.querySelector('.mobile-menu-button').addEventListener('click', () => {
+            document.querySelector('.mobile-menu').classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>

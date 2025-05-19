@@ -1,0 +1,309 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About IconHub | Innovative Business Solutions</title>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom Styles */
+        @font-face {
+            font-family: 'Poppins';
+            src: url('./fonts/Poppins-Bold.woff2') format('woff2');
+            font-weight: 700;
+        }
+
+        @font-face {
+            font-family: 'Inter';
+            src: url('./fonts/Inter-Regular.woff2') format('woff2');
+            font-weight: 400;
+        }
+
+        .parallax-container {
+            position: relative;
+            overflow: hidden;
+            height: 60vh;
+        }
+
+        .parallax-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 120%;
+            background: url('assets/about-hero.jpg') center/cover fixed;
+            z-index: 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 24px;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: #E0E0E0;
+        }
+
+        .rotate-3d {
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+            .rotate-3d:hover {
+                transform: rotateY(10deg) rotateX(3deg);
+            }
+
+        .team-card:hover img {
+            transform: scale(1.05);
+        }
+        .nav-link {
+            position: relative;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+            .nav-link::after {
+                content: '';
+                position: absolute;
+                bottom: -2px;
+                left: 0;
+                width: 0;
+                height: 2px;
+                background: #DB5F2A;
+                transition: width 0.3s ease;
+            }
+
+            .nav-link:hover::after,
+            .nav-link.active::after {
+                width: 100%;
+            }
+
+        .mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+            .mobile-menu.open {
+                max-height: 500px; /* Adjust based on content height */
+            }
+    </style>
+</head>
+<body class="font-inter bg-[#F5F5F5]">
+    <!-- Navigation -->
+    <nav class="fixed w-full top-0 bg-white/90 backdrop-blur-md z-50 shadow-sm border-b border-gray-100">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center gap-2">
+                    <div class="w-10 h-10 bg-[#0A3A60] rounded-full flex items-center justify-center">
+                        <span class="font-poppins text-white text-xl font-bold">IH</span>
+                    </div>
+                    <span class="font-poppins font-bold text-xl text-[#1A1A1A]">ICONHUB</span>
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="nav-link px-3 py-2 rounded-lg hover:bg-gray-100 transition-colors">Home</a>
+                    <a href="services.html" class="nav-link px-3 py-2 rounded-lg hover:bg-gray-100 transition-colors">Services</a>
+                    <a href="about.html" class="nav-link px-3 py-2 rounded-lg hover:bg-gray-100 transition-colors">About</a>
+                    <a href="contact.html" class="nav-link px-3 py-2 rounded-lg hover:bg-gray-100 transition-colors">Contact</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden p-2 rounded-lg hover:bg-gray-100 mobile-menu-button">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu (REQUIRED ON ALL PAGES) -->
+        <div class="mobile-menu hidden md:hidden bg-white border-t border-gray-100">
+            <div class="px-4 py-2 space-y-2">
+                <a href="index.html" class="block px-3 py-2 hover:bg-gray-100">Home</a>
+                <a href="services.html" class="block px-3 py-2 hover:bg-gray-100">Services</a>
+                <a href="about.html" class="block px-3 py-2 hover:bg-gray-100">About</a>
+                <a href="contact.html" class="block px-3 py-2 hover:bg-gray-100">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Parallax Hero -->
+    <div class="parallax-container" data-aos="fade">
+        <div class="parallax-bg"></div>
+        <div class="relative z-10 h-full flex items-center justify-center bg-[#0A3A60]/90">
+            <div class="container text-center text-white px-6">
+                <h1 class="font-poppins font-bold text-4xl md:text-6xl uppercase mb-6" data-aos="fade-up">
+                    Shaping <span class="text-[#DB5F2A]">Business</span> Futures
+                </h1>
+                <p class="text-xl max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+                    Pioneering innovative solutions since 2015
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Timeline Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-center font-poppins font-bold text-3xl mb-16" data-aos="fade-up">Our Journey</h2>
+
+            <div class="timeline relative">
+                <!-- Timeline Item -->
+                <div class="timeline-item mb-16" data-aos="fade-right">
+                    <div class="dot absolute left-6 w-4 h-4 bg-[#DB5F2A] rounded-full"></div>
+                    <div class="content ml-16 p-8 bg-[#F5F5F5] rounded-xl shadow-sm">
+                        <h3 class="font-poppins font-bold text-xl mb-2">2015 - Foundation</h3>
+                        <p class="text-gray-600">Established with vision to revolutionize business solutions</p>
+                    </div>
+                </div>
+
+                <!-- Add more timeline items -->
+                <div class="timeline-item mb-16" data-aos="fade-left" data-aos-delay="100">
+                    <div class="dot absolute left-6 w-4 h-4 bg-[#DB5F2A] rounded-full"></div>
+                    <div class="content ml-16 p-8 bg-[#F5F5F5] rounded-xl shadow-sm">
+                        <h3 class="font-poppins font-bold text-xl mb-2">2018 - Expansion</h3>
+                        <p class="text-gray-600">Opened international offices in 3 countries</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Vision -->
+    <section class="py-20 bg-[#F5F5F5]">
+        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-8">
+            <div class="rotate-3d p-8 bg-white rounded-xl shadow-md" data-aos="flip-left">
+                <div class="text-[#DB5F2A] text-4xl mb-4">🎯</div>
+                <h3 class="font-poppins font-bold text-xl mb-4">Our Mission</h3>
+                <p class="text-gray-600">Empower businesses through innovative solutions and strategic partnerships</p>
+            </div>
+
+            <div class="rotate-3d p-8 bg-white rounded-xl shadow-md" data-aos="flip-right">
+                <div class="text-[#DB5F2A] text-4xl mb-4">👁️</div>
+                <h3 class="font-poppins font-bold text-xl mb-4">Our Vision</h3>
+                <p class="text-gray-600">Global leader in transformative business services and digital innovation</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership Team -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-center font-poppins font-bold text-3xl mb-16" data-aos="fade-up">Leadership Team</h2>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Team Member -->
+                <div class="team-card" data-aos="zoom-in">
+                    <div class="aspect-square bg-gray-100 rounded-xl overflow-hidden">
+                        <img src="assets/team-ceo.jpg" alt="CEO"
+                             class="w-full h-full object-cover transition-transform duration-500">
+                    </div>
+                    <h4 class="font-poppins font-bold mt-4">Alex Johnson</h4>
+                    <p class="text-[#DB5F2A]">CEO & Founder</p>
+                </div>
+
+                <!-- Add more team members -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#1A1A1A] text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8" data-aos="fade-up">
+                <div>
+                    <div class="w-12 h-12 bg-[#0A3A60] rounded-full flex items-center justify-center mb-4">
+                        <span class="font-poppins text-white text-xl font-bold">IH</span>
+                    </div>
+                    <p class="text-sm">Innovating business solutions since 2015</p>
+                </div>
+                <div>
+                    <h4 class="font-poppins font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="hover:text-[#DB5F2A] transition-colors">Home</a></li>
+                        <li><a href="about.html" class="hover:text-[#DB5F2A]">About</a></li>
+                        <li><a href="service.html" class="hover:text-[#DB5F2A]">Services</a></li>
+                        <li><a href="contact.html" class="hover:text-[#DB5F2A]">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-poppins font-bold mb-4">Contact</h4>
+                    <p class="text-sm">1 RCF Zone, Ibadan, Oyo state<br>Nigeria</p>
+                    <p class="text-sm mt-2">Tel: (+234) 123-4567</p>
+                </div>
+                <div>
+                    <h4 class="font-poppins font-bold mb-4">Follow Us</h4>
+                    <div class="flex gap-4">
+                        <a href="#" class="hover:text-[#DB5F2A]">LinkedIn</a>
+                        <a href="#" class="hover:text-[#DB5F2A]">Twitter</a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-white/10 mt-12 pt-8 text-center">
+                <p class="text-sm">&copy; 2025 IconHub Limited. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+            easing: 'ease-out-quad'
+        });
+
+        // Parallax Effect
+        window.addEventListener('scroll', () => {
+            const parallaxBg = document.querySelector('.parallax-bg');
+            const scrolled = window.pageYOffset;
+            parallaxBg.style.transform = `translateY(${scrolled * 0.4}px)`;
+        });
+
+        // Mobile Menu
+        const menuButton = document.querySelector('.mobile-menu-button');
+        const mobileMenu = document.querySelector('.mobile-menu');
+
+        menuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close menu on click outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.mobile-menu') && !e.target.closest('.mobile-menu-button')) {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+        // Mobile Menu Toggle
+        document.querySelector('.mobile-menu-button').addEventListener('click', () => {
+            const menu = document.querySelector('.mobile-menu');
+            menu.classList.toggle('open');
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            const menu = document.querySelector('.mobile-menu');
+            const button = document.querySelector('.mobile-menu-button');
+
+            if (!menu.contains(e.target) && !button.contains(e.target)) {
+                menu.classList.remove('open');
+            }
+        });
+
+        // Add active class to current page link
+        const currentPage = location.pathname.split('/').pop();
+        document.querySelectorAll('.nav-link').forEach(link => {
+            if (link.getAttribute('href') === currentPage) {
+                link.classList.add('active');
+                link.style.color = '#DB5F2A'; // Set active color
+            }
+        });
+    </script>
+</body>
+</html>

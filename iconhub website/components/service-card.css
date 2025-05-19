@@ -1,0 +1,74 @@
+.service-card {
+    background: #FFFFFF;
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #E0E0E0;
+}
+
+    .service-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    }
+
+.icon {
+    font-size: 2.5rem;
+    color: #DB5F2A;
+    margin-bottom: 1.5rem;
+}
+
+.title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: #1A1A1A;
+    margin-bottom: 1rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.description {
+    font-family: 'Inter', sans-serif;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    flex-grow: 1;
+}
+
+.cta-button {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    color: #DB5F2A;
+    background: none;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+    .cta-button:hover {
+        color: #C24E1F;
+    }
+
+.arrow {
+    font-weight: 700;
+    transition: transform 0.3s ease;
+}
+
+.cta-button:hover .arrow {
+    transform: translateX(3px);
+}
+
+@media (max-width: 768px) {
+    .service-card {
+        min-height: auto;
+        padding: 1.5rem;
+    }
+}
